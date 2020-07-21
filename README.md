@@ -45,9 +45,11 @@ Note: as of now, if a SA gets an additional permission in IAM via GCP console, t
 - For kubernetes deployer (if the cluster using RBAC):
 
 ```roles = [ "roles/container.viewer", ]```
+
 - For cloud run deployer:
 
 ```roles = [ "roles/cloudscheduler.admin", "roles/container.developer", "roles/run.invoker", ]```
+
 - For cloud function deployer:
 
 ```roles = ["roles/cloudtasks.enqueuer", "roles/cloudtasks.viewer", "roles/cloudtasks.taskRunner", "roles/cloudtasks.taskDeleter", ]```
