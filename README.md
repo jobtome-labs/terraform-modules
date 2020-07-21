@@ -40,6 +40,18 @@ module "my_service_account" {
 
 Note: as of now, if a SA gets an additional permission in IAM via GCP console, terraform will *not* notice and will not remove it. This will be fixed in a future version by using resource type `google_project_iam_binding` instead of the current `google_project_iam_member`
 
+#### Examples: permissions needed
+
+- For kubernetes deployer (if the cluster using RBAC):
+
+```roles = [ "roles/container.viewer", ]```
+- For cloud run deployer:
+
+```roles = [ "roles/cloudscheduler.admin", "roles/container.developer", "roles/run.invoker", ]```
+- For cloud function deployer:
+
+```roles = ["roles/cloudtasks.enqueuer", "roles/cloudtasks.viewer", "roles/cloudtasks.taskRunner", "roles/cloudtasks.taskDeleter", ]```
+
 ### Pub/sub
 
 Define a PubSub this way:
