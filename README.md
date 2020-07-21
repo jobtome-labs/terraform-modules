@@ -42,7 +42,7 @@ Note: as of now, if a SA gets an additional permission in IAM via GCP console, t
 
 #### Examples: permissions needed
 
-- For kubernetes deployer (if the cluster using RBAC):
+- For kubernetes deployer (if the cluster is configured for using RBAC):
 
 ```roles = [ "roles/container.viewer", ]```
 
