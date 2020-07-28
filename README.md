@@ -23,7 +23,7 @@ Define a SA this way:
 
 ```
 module "my_service_account" {
-  source       = "git::https://github.com/jobtome-labs/terraform-modules.git//serviceaccount-with-iam?ref=v3.1.0""
+  source       = "git::https://github.com/jobtome-labs/terraform-modules.git//serviceaccount-with-iam?ref=v3.2.0""
 
   project      = "my-gcp-project"
   name         = "my-application-deployer"
@@ -40,13 +40,27 @@ module "my_service_account" {
 
 Note: as of now, if a SA gets an additional permission in IAM via GCP console, terraform will *not* notice and will not remove it. This will be fixed in a future version by using resource type `google_project_iam_binding` instead of the current `google_project_iam_member`
 
+#### Examples: permissions needed
+
+- For kubernetes deployer (if the cluster is configured for using RBAC):
+
+```roles = [ "roles/container.viewer", ]```
+
+- For cloud run deployer:
+
+```roles = [ "roles/cloudscheduler.admin", "roles/container.developer", "roles/run.invoker", ]```
+
+- For cloud function deployer:
+
+```roles = ["roles/cloudtasks.enqueuer", "roles/cloudtasks.viewer", "roles/cloudtasks.taskRunner", "roles/cloudtasks.taskDeleter", ]```
+
 ### Pub/sub
 
 Define a PubSub this way:
 
 ```
 module "my_queue" {
-  source       = "git::https://github.com/jobtome-labs/terraform-modules.git//pubsub-with-iam?ref=v3.2.0"
+  source       = "git::https://github.com/jobtome-labs/terraform-modules.git//pubsub-with-iam?ref=v3.1.0"
 
   project      = "my-gcp-project"
   name         = "my-pubsub"
