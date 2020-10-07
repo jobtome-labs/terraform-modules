@@ -9,10 +9,10 @@ resource "google_service_account" "account" {
   }
 }
 
-resource "google_project_iam_member" "binding" {
+resource "google_project_iam_binding" "binding" {
   count = length(var.roles)
 
-  member  = "serviceAccount:${var.name}@${var.project}.iam.gserviceaccount.com"
+  members  = ["serviceAccount:${var.name}@${var.project}.iam.gserviceaccount.com"]
   project = var.project
   role    = element(var.roles,count.index)
 
