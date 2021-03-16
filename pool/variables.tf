@@ -16,6 +16,11 @@ variable "node_count_max" {
   default     = 10
 }
 
+variable "node_count_min" {
+  description = "The min number of nodes to create in autoscaling mode"
+  default     = 1
+}
+
 variable "cluster" {
   description = "Name of the cluster to which to add this Node Pool"
 }
